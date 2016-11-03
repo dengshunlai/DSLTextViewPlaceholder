@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DD4274501DCB6A4E00011C31 /* UITextView+DSLPlaceholder.m in Sources */ = {isa = PBXBuildFile; fileRef = DD42744F1DCB6A4E00011C31 /* UITextView+DSLPlaceholder.m */; };
+		DD66B9D51DCB90D400AF25CB /* DemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD66B9D41DCB90D400AF25CB /* DemoViewController.m */; };
 		DD6D87641DCB691D0048D5DB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6D87631DCB691D0048D5DB /* main.m */; };
 		DD6D87671DCB691D0048D5DB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6D87661DCB691D0048D5DB /* AppDelegate.m */; };
 		DD6D876A1DCB691D0048D5DB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6D87691DCB691D0048D5DB /* ViewController.m */; };
@@ -35,6 +37,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DD42744E1DCB6A4E00011C31 /* UITextView+DSLPlaceholder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+DSLPlaceholder.h"; sourceTree = "<group>"; };
+		DD42744F1DCB6A4E00011C31 /* UITextView+DSLPlaceholder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+DSLPlaceholder.m"; sourceTree = "<group>"; };
+		DD66B9D31DCB90D400AF25CB /* DemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoViewController.h; sourceTree = "<group>"; };
+		DD66B9D41DCB90D400AF25CB /* DemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoViewController.m; sourceTree = "<group>"; };
 		DD6D875F1DCB691D0048D5DB /* DSLTextViewPlaceholderExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DSLTextViewPlaceholderExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD6D87631DCB691D0048D5DB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		DD6D87651DCB691D0048D5DB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -78,6 +84,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DD42744D1DCB6A2400011C31 /* DSLTextViewPlaceholder */ = {
+			isa = PBXGroup;
+			children = (
+				DD42744E1DCB6A4E00011C31 /* UITextView+DSLPlaceholder.h */,
+				DD42744F1DCB6A4E00011C31 /* UITextView+DSLPlaceholder.m */,
+			);
+			path = DSLTextViewPlaceholder;
+			sourceTree = SOURCE_ROOT;
+		};
 		DD6D87561DCB691D0048D5DB = {
 			isa = PBXGroup;
 			children = (
@@ -101,10 +116,13 @@
 		DD6D87611DCB691D0048D5DB /* DSLTextViewPlaceholderExample */ = {
 			isa = PBXGroup;
 			children = (
+				DD42744D1DCB6A2400011C31 /* DSLTextViewPlaceholder */,
 				DD6D87651DCB691D0048D5DB /* AppDelegate.h */,
 				DD6D87661DCB691D0048D5DB /* AppDelegate.m */,
 				DD6D87681DCB691D0048D5DB /* ViewController.h */,
 				DD6D87691DCB691D0048D5DB /* ViewController.m */,
+				DD66B9D31DCB90D400AF25CB /* DemoViewController.h */,
+				DD66B9D41DCB90D400AF25CB /* DemoViewController.m */,
 				DD6D876B1DCB691D0048D5DB /* Main.storyboard */,
 				DD6D876E1DCB691D0048D5DB /* Assets.xcassets */,
 				DD6D87701DCB691D0048D5DB /* LaunchScreen.storyboard */,
@@ -112,7 +130,7 @@
 				DD6D87621DCB691D0048D5DB /* Supporting Files */,
 			);
 			path = DSLTextViewPlaceholderExample;
-			sourceTree = "<group>";
+			sourceTree = SOURCE_ROOT;
 		};
 		DD6D87621DCB691D0048D5DB /* Supporting Files */ = {
 			isa = PBXGroup;
@@ -277,7 +295,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD6D876A1DCB691D0048D5DB /* ViewController.m in Sources */,
+				DD4274501DCB6A4E00011C31 /* UITextView+DSLPlaceholder.m in Sources */,
 				DD6D87671DCB691D0048D5DB /* AppDelegate.m in Sources */,
+				DD66B9D51DCB90D400AF25CB /* DemoViewController.m in Sources */,
 				DD6D87641DCB691D0048D5DB /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -516,6 +536,7 @@
 				DD6D878E1DCB691D0048D5DB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DD6D878F1DCB691D0048D5DB /* Build configuration list for PBXNativeTarget "DSLTextViewPlaceholderExampleTests" */ = {
 			isa = XCConfigurationList;
@@ -524,6 +545,7 @@
 				DD6D87911DCB691D0048D5DB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DD6D87921DCB691D0048D5DB /* Build configuration list for PBXNativeTarget "DSLTextViewPlaceholderExampleUITests" */ = {
 			isa = XCConfigurationList;
@@ -532,6 +554,7 @@
 				DD6D87941DCB691D0048D5DB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
