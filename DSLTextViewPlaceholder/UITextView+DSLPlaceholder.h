@@ -12,4 +12,10 @@
 
 @property (strong, nonatomic) NSString *dsl_textView_placeholder;
 
+@property (assign, nonatomic) CGFloat dsl_textView_placeholder_fontSize;
+
+@property (strong, nonatomic) UIColor *dsl_textView_placeholder_color;
+
+@property (assign, nonatomic) NSInteger dsl_textView_maxLength;
+
 @end

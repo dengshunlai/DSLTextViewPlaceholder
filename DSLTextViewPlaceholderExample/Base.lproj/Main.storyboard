@@ -45,7 +45,7 @@
                         <viewControllerLayoutGuide type="top" id="S9A-wB-TM9"/>
                         <viewControllerLayoutGuide type="bottom" id="g3M-uu-c9M"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="7lu-nG-37Q">
+                    <view key="view" contentMode="scaleToFill" id="7lu-nG-37Q" customClass="UIControl">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -64,6 +64,9 @@
                             <constraint firstAttribute="trailing" secondItem="oln-kZ-UU0" secondAttribute="trailing" constant="20" id="w7z-ul-chE"/>
                             <constraint firstItem="oln-kZ-UU0" firstAttribute="leading" secondItem="7lu-nG-37Q" secondAttribute="leading" constant="20" id="xv2-9q-ddx"/>
                         </constraints>
+                        <connections>
+                            <action selector="endEdit:" destination="gcH-ZF-mmu" eventType="touchUpInside" id="OcK-07-uzc"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="OGp-9S-elZ"/>
                     <connections>

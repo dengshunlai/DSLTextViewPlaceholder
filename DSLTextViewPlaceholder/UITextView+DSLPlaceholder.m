@@ -51,17 +51,55 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dsl_textViewTextDidChange:) name:UITextViewTextDidChangeNotification object:nil];
 }
 
+- (CGFloat)dsl_textView_placeholder_fontSize
+{
+    return [objc_getAssociatedObject(self, @selector(dsl_textView_placeholder_fontSize)) doubleValue];
+}
+
+- (void)setDsl_textView_placeholder_fontSize:(CGFloat)dsl_textView_placeholder_fontSize
+{
+    objc_setAssociatedObject(self, @selector(dsl_textView_placeholder_fontSize), [NSNumber numberWithDouble:dsl_textView_placeholder_fontSize], OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (UIColor *)dsl_textView_placeholder_color
+{
+    return objc_getAssociatedObject(self, @selector(dsl_textView_placeholder_color));
+}
+
+- (void)setDsl_textView_placeholder_color:(UIColor *)dsl_textView_placeholder_color
+{
+    objc_setAssociatedObject(self, @selector(dsl_textView_placeholder_color), dsl_textView_placeholder_color, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
 - (UILabel *)dsl_textView_placeholderLabel
 {
     UILabel *label = objc_getAssociatedObject(self, @selector(dsl_textView_placeholderLabel));
     if (!label) {
         self.dsl_textView_placeholderLabel = label = [[UILabel alloc] init];
-        label.font = self.font;
-        label.textColor = UIColorFromRGB(0xbfbfbf);
+        if (self.dsl_textView_placeholder_fontSize) {
+            label.font = [UIFont systemFontOfSize:self.dsl_textView_placeholder_fontSize];
+        } else {
+            if (self.font) {
+                label.font = self.font;
+            } else {
+                label.font = [UIFont systemFontOfSize:12];
+            }
+        }
+        if (self.dsl_textView_placeholder_color) {
+            label.textColor = self.dsl_textView_placeholder_color;
+        } else {
+            label.textColor = UIColorFromRGB(0xbfbfbf);
+        }
+        UIView *textContainerView;
+        for (UIView *view in self.subviews) {
+            if ([view isKindOfClass:NSClassFromString(@"_UITextContainerView" )]) {
+                textContainerView = view;
+            }
+        }
+        [textContainerView addSubview:label];
         label.translatesAutoresizingMaskIntoConstraints = NO;
-        [self addSubview:label];
-        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-5-[label]-5-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(label)]];
-        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-8-[label]" options:0 metrics:nil views:NSDictionaryOfVariableBindings(label)]];
+        [textContainerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-5-[label]-5-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(label)]];
+        [textContainerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[label]|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(label)]];
     }
     return label;
 }
@@ -71,6 +109,16 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
     objc_setAssociatedObject(self, @selector(dsl_textView_placeholderLabel), dsl_textView_placeholderLabel, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
+- (NSInteger)dsl_textView_maxLength
+{
+    return [objc_getAssociatedObject(self, @selector(dsl_textView_maxLength)) integerValue];
+}
+
+- (void)setDsl_textView_maxLength:(NSInteger)dsl_textView_maxLength
+{
+    objc_setAssociatedObject(self, @selector(dsl_textView_maxLength), [NSNumber numberWithInteger:dsl_textView_maxLength], OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
 - (void)dsl_textViewTextDidChange:(NSNotification *)notification
 {
     if (self.dsl_textView_placeholder.length) {
@@ -78,6 +126,11 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
             self.dsl_textView_placeholderLabel.hidden = YES;
         } else {
             self.dsl_textView_placeholderLabel.hidden = NO;
+        }
+    }
+    if (self.dsl_textView_maxLength > 0) {
+        if (self.text.length > self.dsl_textView_maxLength) {
+            self.text = [self.text substringToIndex:self.dsl_textView_maxLength];
         }
     }
 }

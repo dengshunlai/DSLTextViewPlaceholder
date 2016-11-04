@@ -21,12 +21,23 @@
     [super viewDidLoad];
     self.automaticallyAdjustsScrollViewInsets = NO;
     
-    _textView.dsl_textView_placeholder = @"最多输入100个字符..";
+    _textView.dsl_textView_placeholder = @"最多输入50个字符..";
+    _textView.dsl_textView_maxLength = 50;
+    
+    
+    UITextView *textView2 = [[UITextView alloc] initWithFrame:CGRectMake(20, 200, [UIScreen mainScreen].bounds.size.width - 40, 88)];
+    [self.view addSubview:textView2];
+    textView2.dsl_textView_placeholder = @"最多输入10个字符..";
+    textView2.dsl_textView_maxLength = 10;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)endEdit:(UIControl *)sender {
+    [self.view endEditing:YES];
 }
 
 @end
