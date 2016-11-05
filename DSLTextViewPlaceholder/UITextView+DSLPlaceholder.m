@@ -59,6 +59,7 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 - (void)setDsl_textView_placeholder_fontSize:(CGFloat)dsl_textView_placeholder_fontSize
 {
     objc_setAssociatedObject(self, @selector(dsl_textView_placeholder_fontSize), [NSNumber numberWithDouble:dsl_textView_placeholder_fontSize], OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    self.dsl_textView_placeholderLabel.font = [UIFont systemFontOfSize:dsl_textView_placeholder_fontSize];
 }
 
 - (UIColor *)dsl_textView_placeholder_color
@@ -69,6 +70,7 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 - (void)setDsl_textView_placeholder_color:(UIColor *)dsl_textView_placeholder_color
 {
     objc_setAssociatedObject(self, @selector(dsl_textView_placeholder_color), dsl_textView_placeholder_color, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    self.dsl_textView_placeholderLabel.textColor = dsl_textView_placeholder_color;
 }
 
 - (UILabel *)dsl_textView_placeholderLabel
