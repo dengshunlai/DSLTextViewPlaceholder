@@ -7,6 +7,7 @@
 //
 
 #import "UITextView+DSLPlaceholder.h"
+#import "DSLTextViewPlaceholderObserver.h"
 #import <objc/runtime.h>
 
 #define UIColorFromRGB(rgbValue) [UIColor \
@@ -17,26 +18,11 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 @interface UITextView ()
 
 @property (strong, nonatomic) UILabel *dsl_textView_placeholderLabel;
+@property (strong, nonatomic) DSLTextViewPlaceholderObserver *dsl_textView_placeholder_obsever;
 
 @end
 
 @implementation UITextView (DSLPlaceholder)
-
-+ (void)load
-{
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        Method original = class_getInstanceMethod(self, NSSelectorFromString(@"dealloc"));
-        Method exchange = class_getInstanceMethod(self, @selector(dsl_textView_placeholder_dealloc));
-        method_exchangeImplementations(original, exchange);
-    });
-}
-
-- (void)dsl_textView_placeholder_dealloc
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextViewTextDidChangeNotification object:nil];
-    [self dsl_textView_placeholder_dealloc];
-}
 
 - (NSString *)dsl_textView_placeholder
 {
@@ -47,8 +33,8 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 {
     objc_setAssociatedObject(self, @selector(dsl_textView_placeholder), dsl_textView_placeholder, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     self.dsl_textView_placeholderLabel.text = dsl_textView_placeholder;
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextViewTextDidChangeNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dsl_textViewTextDidChange:) name:UITextViewTextDidChangeNotification object:nil];
+    [self.dsl_textView_placeholder_obsever removeNotification];
+    [self.dsl_textView_placeholder_obsever setupNotification];
 }
 
 - (CGFloat)dsl_textView_placeholder_fontSize
@@ -71,6 +57,31 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 {
     objc_setAssociatedObject(self, @selector(dsl_textView_placeholder_color), dsl_textView_placeholder_color, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     self.dsl_textView_placeholderLabel.textColor = dsl_textView_placeholder_color;
+}
+
+- (NSInteger)dsl_textView_maxLength
+{
+    return [objc_getAssociatedObject(self, @selector(dsl_textView_maxLength)) integerValue];
+}
+
+- (void)setDsl_textView_maxLength:(NSInteger)dsl_textView_maxLength
+{
+    objc_setAssociatedObject(self, @selector(dsl_textView_maxLength), [NSNumber numberWithInteger:dsl_textView_maxLength], OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (DSLTextViewPlaceholderObserver *)dsl_textView_placeholder_obsever
+{
+    DSLTextViewPlaceholderObserver *obsever = objc_getAssociatedObject(self, @selector(dsl_textView_placeholder_obsever));
+    if (!obsever) {
+        self.dsl_textView_placeholder_obsever = obsever = [[DSLTextViewPlaceholderObserver alloc] init];
+        obsever.textView = self;
+    }
+    return obsever;
+}
+
+- (void)setDsl_textView_placeholder_obsever:(DSLTextViewPlaceholderObserver *)dsl_textView_placeholder_obsever
+{
+    objc_setAssociatedObject(self, @selector(dsl_textView_placeholder_obsever), dsl_textView_placeholder_obsever, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 - (UILabel *)dsl_textView_placeholderLabel
@@ -111,17 +122,7 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
     objc_setAssociatedObject(self, @selector(dsl_textView_placeholderLabel), dsl_textView_placeholderLabel, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (NSInteger)dsl_textView_maxLength
-{
-    return [objc_getAssociatedObject(self, @selector(dsl_textView_maxLength)) integerValue];
-}
-
-- (void)setDsl_textView_maxLength:(NSInteger)dsl_textView_maxLength
-{
-    objc_setAssociatedObject(self, @selector(dsl_textView_maxLength), [NSNumber numberWithInteger:dsl_textView_maxLength], OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-
-- (void)dsl_textViewTextDidChange:(NSNotification *)notification
+- (void)dsl_textView_placeholder_textDidChange
 {
     if (self.dsl_textView_placeholder.length) {
         if (self.text.length) {

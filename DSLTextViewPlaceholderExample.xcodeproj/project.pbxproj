@@ -17,6 +17,7 @@
 		DD6D87721DCB691D0048D5DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD6D87701DCB691D0048D5DB /* LaunchScreen.storyboard */; };
 		DD6D877D1DCB691D0048D5DB /* DSLTextViewPlaceholderExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6D877C1DCB691D0048D5DB /* DSLTextViewPlaceholderExampleTests.m */; };
 		DD6D87881DCB691D0048D5DB /* DSLTextViewPlaceholderExampleUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6D87871DCB691D0048D5DB /* DSLTextViewPlaceholderExampleUITests.m */; };
+		DDED5B981DCD971D006FACF5 /* DSLTextViewPlaceholderObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = DDED5B971DCD971D006FACF5 /* DSLTextViewPlaceholderObserver.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,8 @@
 		DD6D87831DCB691D0048D5DB /* DSLTextViewPlaceholderExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DSLTextViewPlaceholderExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD6D87871DCB691D0048D5DB /* DSLTextViewPlaceholderExampleUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSLTextViewPlaceholderExampleUITests.m; sourceTree = "<group>"; };
 		DD6D87891DCB691D0048D5DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DDED5B961DCD971D006FACF5 /* DSLTextViewPlaceholderObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSLTextViewPlaceholderObserver.h; sourceTree = "<group>"; };
+		DDED5B971DCD971D006FACF5 /* DSLTextViewPlaceholderObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSLTextViewPlaceholderObserver.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +92,8 @@
 			children = (
 				DD42744E1DCB6A4E00011C31 /* UITextView+DSLPlaceholder.h */,
 				DD42744F1DCB6A4E00011C31 /* UITextView+DSLPlaceholder.m */,
+				DDED5B961DCD971D006FACF5 /* DSLTextViewPlaceholderObserver.h */,
+				DDED5B971DCD971D006FACF5 /* DSLTextViewPlaceholderObserver.m */,
 			);
 			path = DSLTextViewPlaceholder;
 			sourceTree = SOURCE_ROOT;
@@ -295,6 +300,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD6D876A1DCB691D0048D5DB /* ViewController.m in Sources */,
+				DDED5B981DCD971D006FACF5 /* DSLTextViewPlaceholderObserver.m in Sources */,
 				DD4274501DCB6A4E00011C31 /* UITextView+DSLPlaceholder.m in Sources */,
 				DD6D87671DCB691D0048D5DB /* AppDelegate.m in Sources */,
 				DD66B9D51DCB90D400AF25CB /* DemoViewController.m in Sources */,
