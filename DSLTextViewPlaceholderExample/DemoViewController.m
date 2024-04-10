@@ -21,6 +21,10 @@
     [super viewDidLoad];
     self.automaticallyAdjustsScrollViewInsets = NO;
     
+    _textView.layer.borderColor = [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:1].CGColor;
+    _textView.layer.borderWidth = 1;
+    _textView.layer.cornerRadius = 5;
+    _textView.layer.masksToBounds = YES;
     //设置placeholder
     _textView.dsl_textView_placeholder = @"最多输入50个字符..";
     //限制最大输入长度
@@ -31,6 +35,10 @@
     //_textView.dsl_textView_placeholder_fontSize = 16;
     
     UITextView *textView2 = [[UITextView alloc] initWithFrame:CGRectMake(20, 200, [UIScreen mainScreen].bounds.size.width - 40, 88)];
+    textView2.layer.borderColor = [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:1].CGColor;
+    textView2.layer.borderWidth = 1;
+    textView2.layer.cornerRadius = 5;
+    textView2.layer.masksToBounds = YES;
     [self.view addSubview:textView2];
     textView2.dsl_textView_placeholder = @"最多输入20个字符..";
     textView2.dsl_textView_maxLength = 20;
