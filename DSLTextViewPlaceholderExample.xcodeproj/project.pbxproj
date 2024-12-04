@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		504C358F2D00045C0021896D /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 504C358E2D00045C0021896D /* README.md */; };
 		DD4274501DCB6A4E00011C31 /* UITextView+DSLPlaceholder.m in Sources */ = {isa = PBXBuildFile; fileRef = DD42744F1DCB6A4E00011C31 /* UITextView+DSLPlaceholder.m */; };
 		DD66B9D51DCB90D400AF25CB /* DemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD66B9D41DCB90D400AF25CB /* DemoViewController.m */; };
 		DD6D87641DCB691D0048D5DB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6D87631DCB691D0048D5DB /* main.m */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		504C358E2D00045C0021896D /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		DD42744E1DCB6A4E00011C31 /* UITextView+DSLPlaceholder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+DSLPlaceholder.h"; sourceTree = "<group>"; };
 		DD42744F1DCB6A4E00011C31 /* UITextView+DSLPlaceholder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+DSLPlaceholder.m"; sourceTree = "<group>"; };
 		DD66B9D31DCB90D400AF25CB /* DemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoViewController.h; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 		DD6D87561DCB691D0048D5DB = {
 			isa = PBXGroup;
 			children = (
+				504C358E2D00045C0021896D /* README.md */,
 				DD6D87611DCB691D0048D5DB /* DSLTextViewPlaceholderExample */,
 				DD6D877B1DCB691D0048D5DB /* DSLTextViewPlaceholderExampleTests */,
 				DD6D87861DCB691D0048D5DB /* DSLTextViewPlaceholderExampleUITests */,
@@ -275,6 +278,7 @@
 			files = (
 				DD6D87721DCB691D0048D5DB /* LaunchScreen.storyboard in Resources */,
 				DD6D876F1DCB691D0048D5DB /* Assets.xcassets in Resources */,
+				504C358F2D00045C0021896D /* README.md in Resources */,
 				DD6D876D1DCB691D0048D5DB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
